@@ -22,8 +22,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
+import androidx.compose.ui.node.ModifierNodeElement
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.bharat.slimi.feature_auth.presentation.register.components.AuthStep
+import com.bharat.slimi.feature_auth.presentation.register.components.DobStep
+import com.bharat.slimi.feature_auth.presentation.register.components.GenderStep
+import com.bharat.slimi.feature_auth.presentation.register.components.GoalStep
+import com.bharat.slimi.feature_auth.presentation.register.components.HeightStep
+import com.bharat.slimi.feature_auth.presentation.register.components.NameStep
+import com.bharat.slimi.feature_auth.presentation.register.components.WeightStep
 
 @Composable
 fun RegisterScreen(
@@ -51,8 +60,15 @@ fun RegisterScreen(
                             slideOutHorizontally(targetOffsetX = { it }) + fadeOut()
                 }
             ) { targetState ->
-
-
+                when(targetState){
+                    RegistrationStep.GENDER_STEP -> GenderStep(modifier = Modifier.fillMaxSize(), viewModel = viewModel)
+                    RegistrationStep.GOAL_STEP -> GoalStep(modifier = Modifier.fillMaxSize(), viewModel = viewModel)
+                    RegistrationStep.NAME_STEP -> NameStep(modifier = Modifier.fillMaxSize(), viewModel = viewModel)
+                    RegistrationStep.DOB_STEP -> DobStep(modifier = Modifier.fillMaxSize(), viewModel = viewModel)
+                    RegistrationStep.HEIGHT_STEP -> HeightStep(modifier = Modifier.fillMaxSize(), viewModel = viewModel)
+                    RegistrationStep.WEIGHT_STEP -> WeightStep(modifier = Modifier.fillMaxSize(), viewModel = viewModel)
+                    RegistrationStep.AUTH_STEP -> AuthStep(modifier = Modifier.fillMaxSize(), viewModel = viewModel)
+                }
 
             }
         }
