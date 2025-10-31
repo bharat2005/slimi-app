@@ -40,6 +40,21 @@ class RegisterViewModel : ViewModel() {
         }
     }
 
+    fun goToPreviousStep(){
+        val previousStep = when(uiState.value.currentStep){
+            RegistrationStep.GENDER_STEP -> null
+            RegistrationStep.GOAL_STEP -> RegistrationStep.GENDER_STEP
+            RegistrationStep.NAME_STEP -> RegistrationStep.GOAL_STEP
+            RegistrationStep.DOB_STEP -> RegistrationStep.NAME_STEP
+            RegistrationStep.HEIGHT_STEP -> RegistrationStep.DOB_STEP
+            RegistrationStep.WEIGHT_STEP -> RegistrationStep.HEIGHT_STEP
+            RegistrationStep.AUTH_STEP -> RegistrationStep.WEIGHT_STEP
+        }
+        if(previousStep != null){
+            _uiState.update { it.copy(currentStep = previousStep) }
+        }
+    }
+
 
 
 }

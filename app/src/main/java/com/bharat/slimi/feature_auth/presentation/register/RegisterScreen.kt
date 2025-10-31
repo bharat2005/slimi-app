@@ -1,5 +1,6 @@
 package com.bharat.slimi.feature_auth.presentation.register
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -36,9 +37,20 @@ import com.bharat.slimi.feature_auth.presentation.register.components.WeightStep
 
 @Composable
 fun RegisterScreen(
-    viewModel : RegisterViewModel = viewModel()
+    viewModel : RegisterViewModel = viewModel(),
+    onExit : () -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
+
+    BackHandler {
+        val currentStep = uiState.currentStep
+        if(currentStep == RegistrationStep.GENDER_STEP){
+            onExit()
+        } else {
+            viewModel.goToPreviousStep()
+        }
+
+    }
 
 
     Scaffold { paddingValues ->

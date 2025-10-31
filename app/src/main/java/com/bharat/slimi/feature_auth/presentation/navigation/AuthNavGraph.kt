@@ -23,7 +23,7 @@ fun NavGraphBuilder.auhtNavGraph(navController: NavController){
 
         composable(AuthScreenRoutes.Register) {
             RegisterScreen(
-
+                onExit = {navController.navigateUp()}
             )
 
         }
