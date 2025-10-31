@@ -15,6 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.bharat.slimi.core.navigation.ScreenRoutes
+import com.bharat.slimi.feature_auth.presentation.navigation.auhtNavGraph
 import com.bharat.slimi.ui.theme.SlimiTheme
 
 class MainActivity : ComponentActivity() {
@@ -29,6 +31,13 @@ class MainActivity : ComponentActivity() {
                 ) {
 
                     val navController = rememberNavController()
+
+                    NavHost(
+                        navController = navController,
+                        startDestination = ScreenRoutes.Auth
+                    ){
+                        auhtNavGraph(navController)
+                    }
 
 
 
