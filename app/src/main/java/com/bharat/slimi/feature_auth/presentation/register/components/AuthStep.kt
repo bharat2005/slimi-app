@@ -17,7 +17,7 @@ fun AuthStep(
     viewModel: RegisterViewModel
 ) {
     Column(
-        modifier = Modifier.background(Color.Blue),
+        modifier = modifier.background(Color.Blue),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

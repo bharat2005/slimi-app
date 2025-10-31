@@ -68,8 +68,14 @@ fun RegisterScreen(
             AnimatedContent(
                 targetState = uiState.currentStep,
                 transitionSpec = {
-                    slideInHorizontally(initialOffsetX = { it }) + fadeIn() togetherWith
-                            slideOutHorizontally(targetOffsetX = { it }) + fadeOut()
+                    if(targetState.ordinal > initialState.ordinal){
+                        slideInHorizontally(initialOffsetX = { it }) + fadeIn() togetherWith
+                                slideOutHorizontally(targetOffsetX = { -it }) + fadeOut()
+                    } else {
+                        slideInHorizontally(initialOffsetX = { -it }) + fadeIn() togetherWith
+                                slideOutHorizontally(targetOffsetX = { -it }) + fadeOut()
+                    }
+
                 }
             ) { targetState ->
                 when(targetState){
