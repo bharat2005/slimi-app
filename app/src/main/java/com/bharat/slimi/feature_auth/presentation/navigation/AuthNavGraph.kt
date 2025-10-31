@@ -22,14 +22,14 @@ fun NavGraphBuilder.auhtNavGraph(navController: NavController){
         }
 
         composable(AuthScreenRoutes.Register) {
-            LoginScreen(
+            RegisterScreen(
 
             )
 
         }
 
         composable(AuthScreenRoutes.Login) {
-            RegisterScreen(
+            LoginScreen(
 
             )
 
